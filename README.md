@@ -1,6 +1,5 @@
 # cocktail-js-app
 ## cocktail database to query recipes - implemented in javascript
-
 To build a small web application with __HTML__, __CSS__, and __JavaScript__ that loads data from an _external API_ and _enables the viewing of data points_ in detail.
 
 ### Features and Requirements User Goals
@@ -10,6 +9,7 @@ The users should be able to view a list of data and see more details for a given
 * Load data from an external source (API)
 * View a list of items
 * On user action (e.g., by clicking on a list item), view details for that item
+
 
 ## Technical Requirements
 
