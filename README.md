@@ -1,5 +1,5 @@
 # cocktail-js-app
-cocktail database to query recipes - implemented in javascript
+## cocktail database to query recipes - implemented in javascript
 
 To build a small web application with __HTML__, __CSS__, and __JavaScript__ that loads data from an _external API_ and _enables the viewing of data points_ in detail.
 
