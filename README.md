@@ -12,6 +12,7 @@ The users should be able to view a list of data and see more details for a given
 * On user action (e.g., by clicking on a list item), view details for that item
 
 ## Technical Requirements
+
 ### Required:
 * The app must load data from an external API.
 * The app must display a list of items loaded from that API after the page is loaded.
