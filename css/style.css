@@ -1,4 +1,68 @@
-/* CSS 
-Start: 04.05.2021
+/* 
+||||||||||   COLORS   |||||||||||
+
+Background Color (Porcelain): #f5f8f8;
+Text Color (Dark Gray):	#2b2b2b;
+Primary Color (Oracle):	#357b70;
+Secondary Color (Red Orange):	#FF4734;
+Link active Color (Ocean Green): #479c79;
+Visited Link Color (Mosque): #05676d;
+Button Color: white;
+Button Background Color: #357b70;
+Button Border Color: #000000;
+Second Button Color: #2b2b2b;
+Second Button Background Color: #e0b354;
+Grid Background Color: #f0f3f1;
+keyframe change - Sun yellow 0%: #edc655;
+keyframe change - Sun lightyellow50%: #fcffad;
+keyframe change - Sun orange 100%: #f76414;
 */
 
+body {
+	height: 100%;
+	background-color: #f5f8f8;
+	color: #2b2b2b;
+	font-family: 'lato', sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.6;
+}
+
+h1 {
+	font-size: 30px;
+	font-weight: 700;
+	font-family: 'lato', sans-serif;
+	line-height: normal;
+	}
+
+h2 {
+	font-size: 24px;
+	font-weight: 400;
+	font-family: 'lato', sans-serif;
+	line-height: normal;
+}
+
+h3 {
+	font-size: 20px;
+	font-weight: 300;
+	font-family: 'lato', sans-serif;
+	line-height: normal;
+}
+
+p {
+	font-size: 16px;
+	font-weight: 300;
+	font-family: 'lato', sans-serif;
+	line-height: 1.6;
+}
+
+.strong {
+	font-weight: 400;
+	color: #357b70;
+	font-size: 105%;
+	padding: 0px 1.5px;
+}
+
+.table {
+	color: #357b70;
+}
