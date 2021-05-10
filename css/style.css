@@ -1,26 +1,23 @@
 /* 
 ||||||||||   COLORS   |||||||||||
 
-Background Color (Porcelain): #f5f8f8;
-Text Color (Dark Gray):	#2b2b2b;
-Primary Color (Oracle):	#357b70;
-Secondary Color (Red Orange):	#FF4734;
-Link active Color (Ocean Green): #479c79;
-Visited Link Color (Mosque): #05676d;
-Button Color: white;
-Button Background Color: #357b70;
-Button Border Color: #000000;
-Second Button Color: #2b2b2b;
-Second Button Background Color: #e0b354;
-Grid Background Color: #f0f3f1;
-keyframe change - Sun yellow 0%: #edc655;
-keyframe change - Sun lightyellow50%: #fcffad;
-keyframe change - Sun orange 100%: #f76414;
+Background color (gray nurse): #EEEEEE;
+Text color (dark gray):	#2b2b2b;
+Primary color (Vivid Violet):	#9F40A0;
+Secondary color (Mantis):	#78C750;
+third color (Jaffa): #F08030;
+Bulbasaur color (Portage): #A890F0;
+Butterfree color (Citron): #A7B820;
+Pidgeot color (Hilary): #A8A879;
 */
+
+* {
+	box-sizing: border-box;
+}
 
 body {
 	height: 100%;
-	background-color: #f5f8f8;
+	background-color: #EEEEEE;
 	color: #2b2b2b;
 	font-family: 'lato', sans-serif;
 	font-weight: 400;
@@ -28,25 +25,32 @@ body {
 	line-height: 1.6;
 }
 
+.page {
+	position: relative;
+	min-height: 100%;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.center {
+	text-align: center;
+}
+
 h1 {
 	font-size: 30px;
 	font-weight: 700;
 	font-family: 'lato', sans-serif;
 	line-height: normal;
+	color: #9F40A0;
 	}
 
 h2 {
-	font-size: 24px;
+	font-size: 26px;
 	font-weight: 400;
 	font-family: 'lato', sans-serif;
 	line-height: normal;
-}
-
-h3 {
-	font-size: 20px;
-	font-weight: 300;
-	font-family: 'lato', sans-serif;
-	line-height: normal;
+	color: #F08030;
 }
 
 p {
@@ -63,6 +67,18 @@ p {
 	padding: 0px 1.5px;
 }
 
-.table {
-	color: #357b70;
+.pokemon0 {
+	color: #9F40A0;
+}
+
+.pokemon1 {
+	color: #A7B820;
+}
+
+.pokemon2 {
+	color: #A8A879;
+}
+
+.topmargin {
+	margin-top: -15px;
 }
