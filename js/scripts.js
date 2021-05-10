@@ -1,5 +1,5 @@
 // create html-header
-document.write('<div class="page"><div class="header"><h1>Pokédex App</h1><p class="topmargin">written in JavaScript </p></div><div class="main"><h2>Table of Pokémons</h2>');
+document.write('<div class="page"><div class="header"><h1>Pokédex App</h1><p class="topmargin">written in JavaScript </p></div><div class="main"><h2>Table of Pokémons</h2><ul>');
 // initialise array of pokémons
 let pokemonList = [
 	{ name: 'Bulbasaur', height: 0.7 , types: ['grass', 'poison']},
@@ -9,15 +9,15 @@ let pokemonList = [
 // initialise variable to print note 
 let note = '';
 // for-loop to iterate over each object (i) in array 
-for(let i = 0; i < pokemonList.length; i++) {
+for (let i = 0; i < pokemonList.length; i++) {
 	// condition to check the value of the heights and add note conditional to the value
-	if(pokemonList[i].height < 1) {
+	if (pokemonList[i].height < 1) {
 		note = 'This is a small pokemon';
-	} else if(pokemonList[i].height > 1 && pokemonList[i].height < 1.5) {
+	} else if (pokemonList[i].height > 1 && pokemonList[i].height < 1.5) {
 		note = 'This is an average Pokemon';
 } else {
 	note = "This is a large Pokemon<br> >> <strong>WOW</strong> that's big! <<";
 }
 // create html-content
-document.write('<img src="./img/' + pokemonList[i].name + '.svg"<p><br><strong class="pokemon' + [i] + '">' + pokemonList[i].name + '</strong> (height: ' + pokemonList[i].height + ')<br>' + note + '<br><br>');
+document.write('<li><img src="img/' + pokemonList[i].name + '.svg" width="270px" /><p><strong class="pokemon' + [i] + '">' + pokemonList[i].name + '</strong> (height: ' + pokemonList[i].height + ')<br>' + note + '<br><br></li>');
 }
