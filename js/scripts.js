@@ -1,5 +1,6 @@
 // create html-header
-document.write('<div class="page"><div class="header"><h1>Pokédex App</h1><p class="topmargin">written in JavaScript </p></div><div class="main"><h2>Table of Pokémons</h2><ul>');
+document.write('<div class="page"><div class="header"><h1>Pokédex App</h1><p class="topmargin">written in JavaScript </p></div><div class="main"><h2>Table of Pokémons</h2>');
+document.write('<ul>')
 // initialise array of pokémons
 let pokemonList = [
 	{ name: 'Bulbasaur', height: 0.7 , types: ['grass', 'poison']},
@@ -18,6 +19,8 @@ for (let i = 0; i < pokemonList.length; i++) {
 } else {
 	note = "This is a large Pokemon<br> >> <strong>WOW</strong> that's big! <<";
 }
-// create html-content
-document.write('<li><img src="img/' + pokemonList[i].name + '.svg" width="270px" /><p><strong class="pokemon' + [i] + '">' + pokemonList[i].name + '</strong> (height: ' + pokemonList[i].height + ')<br>' + note + '<br><br></li>');
+// Output from loop write in html 
+document.write('<li><img src="img/' + pokemonList[i].name + '.svg" width="270px" /><p><strong class="pokemon' + [i] + '">' + pokemonList[i].name + '</strong> (height: ' + pokemonList[i].height + ')<br>' + note + '<br><br>');
 }
+// Close html elements
+document.write('</ul></div></div>');
