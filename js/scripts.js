@@ -1,4 +1,6 @@
-// create array of pokémons
+// create html-header
+document.write('<div class="page"><div class="header"><h1>Pokédex App</h1><p class="topmargin">written in JavaScript </p></div><div class="main"><h2>Table of Pokémons</h2>');
+// initialise array of pokémons
 let pokemonList = [
 	{ name: 'Bulbasaur', height: 0.7 , types: ['grass', 'poison']},
 	{ name: 'Butterfree', height: 1.1 , types: ['bug', 'flying']},
@@ -14,8 +16,8 @@ for(let i = 0; i < pokemonList.length; i++) {
 	} else if(pokemonList[i].height > 1 && pokemonList[i].height < 1.5) {
 		note = 'This is an average Pokemon';
 } else {
-	note = "This is a large Pokemon -> <strong>WOW</strong> that's big!";
+	note = "This is a large Pokemon<br> >> <strong>WOW</strong> that's big! <<";
 }
-	// writes html-code and the response from the array directly into index.html
-	document.write('<div><p><strong class="table">' + pokemonList[i].name + '</strong> (height: ' + pokemonList[i].height + ' ) ' + note + '</p></div>');
+// create html-content
+document.write('<img src="./img/' + pokemonList[i].name + '.svg"<p><br><strong class="pokemon' + [i] + '">' + pokemonList[i].name + '</strong> (height: ' + pokemonList[i].height + ')<br>' + note + '<br><br>');
 }
