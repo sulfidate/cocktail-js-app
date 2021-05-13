@@ -6,10 +6,13 @@ let pokemonRepository = (function () {
 		{ name: 'Butterfree', height: 1.1 , types: ['bug', 'flying']},
 		{ name: 'Pidgeot', height: 1.5 , types: ['flying', 'normal']}
 	];
-	
-	function add(pokemon) {
-		pokemonList.push(pokemon);
-	}
+	// function to add anything to pokemonList within the repository / check type of item = object
+	function add(item){
+		if(typeof item === "object"){
+		pokemonList.push(item);
+	 }
+	 else alert("not possible")
+	 };
 	
 	function getAll() {
 		return pokemonList;
