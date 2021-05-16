@@ -34,9 +34,7 @@ let pokemonRepository = (function () {
 		addListItem: addListItem
 	};
 })();
-
 pokemonRepository.add({name: 'Ivysaur', height: 1.0, types: ['grass','poison']});
-
 pokemonRepository.getAll().forEach(function (pokemon) {
 	pokemonRepository.addListItem(pokemon);
 });
