@@ -1,42 +1,42 @@
-// wrap array in an IIFE
 let pokemonRepository = (function () {
-	// initialise array of pokémons
-	let pokemonList = [
+	let repository = [
 		{ name: 'Bulbasaur', height: 0.7 , types: ['grass', 'poison']},
 		{ name: 'Butterfree', height: 1.1 , types: ['bug', 'flying']},
 		{ name: 'Pidgeot', height: 1.5 , types: ['flying', 'normal']}
 	];
-	// function to add anything to pokemonList within the repository / check type of item = object
 	function add(item){
-		if (typeof item === "object") {
-			pokemonList.push(item);
-		} else alert("not possible")
-	};
-	
-	function getAll() {
-		return pokemonList;
+		if (typeof item === "object" && "name" in item && "height" in item && "types" in item) {
+			repository.push(item);
+		} else alert("not possible");
 	}
-	
+	function getAll() {
+		return repository;
+	}
+	function addListItem(pokemon) {
+		let pokemonList = document.querySelector('.pokemon-list');
+		let listpokemon = document.createElement('li');
+		let button = document.createElement('button');
+		button.innerText = pokemon.name;
+		button.innerHTML = '<img src="img/' + pokemon.name + '.svg" width="270px" />';
+		button.classList.add('button-class', pokemon.name);
+		button.addEventListener('click', function (showDetails) {
+			console.log(pokemon.name);
+		});
+		listpokemon.appendChild(button);
+		pokemonList.appendChild(listpokemon);
+	}
+	function showDetails(pokemon) {
+		console.log();
+	}
 	return {
 		add: add,
-		getAll: getAll
+		getAll: getAll,
+		addListItem: addListItem
 	};
 })();
-// create html-header
-document.write('<div class="page"><div class="header"><h1>Pokédex App</h1><p class="topmargin">written in JavaScript </p></div><div class="main"><h2>Table of Pokémons</h2>');
-document.write('<ul>');
-// initialise variable to print note 
-let note = '';
-// call function getAll (-> returning pokemonList) to iterate with forEach() loop over each object in array 
-pokemonRepository.getAll().forEach(function(item,index) {
-	// condition to check the value of the heights and add note conditional to the value
-	if (item.height < 1) {
-		note = 'This is a small pokemon';
-	} else if (item.height > 1 && item.height < 1.5) {
-		note = 'This is an average Pokemon';
-	} else {
-		note = "This is a large Pokemon<br> >> <strong>WOW</strong> that's big! <<";
-	};
-	document.write('<li><img src="img/' + item.name + '.svg" width="270px" /><p><strong class="pokemon' + index + '">' + item.name + '</strong> (height: ' + item.height + ')<br>' + note + '<br><br>');
+
+pokemonRepository.add({name: 'Ivysaur', height: 1.0, types: ['grass','poison']});
+
+pokemonRepository.getAll().forEach(function (pokemon) {
+	pokemonRepository.addListItem(pokemon);
 });
-document.write('</ul></div></div>');
