@@ -24,11 +24,15 @@ let pokemonRepository = (function () {
 		button.innerHTML = '<img src="img/' + pokemon.name + '.svg" width="270px" />';
 		button.classList.add('button-class', pokemon.name);
 		// add event listener to each newly created button for each Pokémon in the list and call function passing pokemon object when button clicked  
-		button.addEventListener('click', function showDetails() {
-			console.log(pokemon.name);
+		button.addEventListener('click', function() {
+			showDetails(pokemon);
 		});
 		listpokemon.appendChild(button);
 		pokemonList.appendChild(listpokemon);
+	}
+	// function showDetails 
+	function showDetails(pokemon) {
+		console.log(pokemon.name);
 	}
 	return {
 		add: add,
