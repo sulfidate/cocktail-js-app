@@ -66,10 +66,6 @@ p {
 	line-height: 1.0;
 }
 
-.padding {
-	padding: 0px 0px 30px;
-}
-
 .strong {
 	font-weight: 400;
 	color: #357b70;
@@ -77,11 +73,12 @@ p {
 	padding: 0px 1.5px;
 }
 
+/* layout button */
 .button-class {
 	background-color: #4caf50; /* Green */
 	border: none;
 	color: white;
-	padding: 16px 32px;
+	padding: 16px 16px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
@@ -94,3 +91,8 @@ p {
 	color: black;
 	border: 2px solid #4caf50;
 }
+
+.padding {
+	padding-bottom: 20px;
+}
+
