@@ -1,48 +1,97 @@
 // wrap array in an IIFE
 let pokemonRepository = (function () {
-	// initialise array of pokémons
-	let repository = [
-		{ name: 'Bulbasaur', height: 0.7 , types: ['grass', 'poison']},
-		{ name: 'Butterfree', height: 1.1 , types: ['bug', 'flying']},
-		{ name: 'Pidgeot', height: 1.5 , types: ['flying', 'normal']}
-	];
+	// initialise empty array to push pokémon items into
+	let pokemonList = [];
+	// API Url to fetch data from
+	let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150'; 
 	// function to add anything to pokemonList within the repository / check type of item = object
-	function add(item){
-		if (typeof item === "object" && "name" in item && "height" in item && "types" in item) {
-			repository.push(item);
-		} else alert("not possible");
+	function add(pokemon){
+		// Validation of item
+		if (
+			typeof pokemon === 'object') {
+			pokemonList.push(pokemon);
+		} 
+		else alert("not possible");
 	}
+	
+	// function to return list
 	function getAll() {
-		return repository;
+		return pokemonList;
 	}
+	
 	// function to create html-tree of pokemon-List with button to add items
 	function addListItem(pokemon) {
 		let pokemonList = document.querySelector('.pokemon-list');
 		let listpokemon = document.createElement('li');
 		let button = document.createElement('button');
 		button.innerText = pokemon.name;
-		button.innerHTML = '<img src="img/' + pokemon.name + '.svg" width="270px" />';
-		button.classList.add('button-class', pokemon.name);
-		// add event listener to each newly created button for each Pokémon in the list and call function passing pokemon object when button clicked  
-		button.addEventListener('click', function() {
-			showDetails(pokemon);
-		});
+		button.classList.add('button-class');
 		listpokemon.appendChild(button);
 		pokemonList.appendChild(listpokemon);
+		// add event listener to each newly created button for each Pokémon in the list and call function passing pokemon object when button clicked 
+		button.addEventListener('click', function(event) {
+					showDetails(pokemon);
+		});
 	}
-	// function showDetails 
+	
+	// Add loadList() function as a return key 
+	function loadList() {
+		return fetch(apiUrl).then(function (response) {
+			return response.json();
+		}).then(function (json) {
+			json.results.forEach(function (item) {
+				let pokemon = {
+					name: item.name,
+					detailsUrl: item.url
+				};
+				add(pokemon);
+				console.log(pokemon);
+			});
+		}).catch(function (e) {
+			console.error(e);
+		})
+	}
+	
+	// loadDetails function GET pokemon (item) details from object on URL
+	function loadDetails(pokemon) {
+		let url = pokemon.detailsUrl;
+		return fetch(url).then(function (response) {
+			return response.json();
+		}).then(function (details) {
+			// add details to item pokemon
+			pokemon.imageUrlFront = details.sprites.front_default;
+			pokemon.imageUrlBack = details.sprites.back_default;
+			pokemon.height = details.height;
+			pokemon.types = details.types;
+			pokemon.weight = details.weight;
+			pokemon.abilities = details.abilities;
+		}).catch(function (e) {
+			console.error(e);
+		});
+	}
+	
+	// function showDetails with then to return JSON response
 	function showDetails(pokemon) {
-		console.log(pokemon.name);
+		loadDetails(pokemon).then(function () {
+			console.log(pokemon);
+		});
 	}
+
 	return {
 		add: add,
 		getAll: getAll,
-		addListItem: addListItem
+		addListItem: addListItem,
+		loadList: loadList,
+		loadDetails: loadDetails,
+		showDetails: showDetails
 	};
+
 })();
-// add new item to repository
-pokemonRepository.add({name: 'Ivysaur', height: 1.0, types: ['grass','poison']});
-// forEach loop to iterate over array / repository
-pokemonRepository.getAll().forEach(function (pokemon) {
-	pokemonRepository.addListItem(pokemon);
+
+// Load data from API
+pokemonRepository.loadList().then(function() {
+	// forEach loop to iterate over array / repository
+	pokemonRepository.getAll().forEach(function (pokemon) {
+		pokemonRepository.addListItem(pokemon);
+	});
 });
