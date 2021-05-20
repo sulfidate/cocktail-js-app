@@ -31,7 +31,7 @@ let pokemonRepository = (function () {
 		pokemonList.appendChild(listpokemon);
 		
 		// add event listener to each newly created button for each Pokémon in the list and call function passing pokemon object when button clicked 
-		button.addEventListener('click', function(event) {
+		button.addEventListener('click', function() {
 					showDetails(pokemon);
 		});
 	}
