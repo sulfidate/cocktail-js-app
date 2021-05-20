@@ -2,6 +2,8 @@
 let pokemonRepository = (function () {
 	// initialise empty array to push pokémon items into
 	let pokemonList = [];
+	// search input
+	let searchInput = document.querySelector("#filter_pokemons");
 	// API Url to fetch data from
 	let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150'; 
 	// function to add anything to pokemonList within the repository / check type of item = object
@@ -10,10 +12,9 @@ let pokemonRepository = (function () {
 		if (
 			typeof pokemon === 'object') {
 			pokemonList.push(pokemon);
-		} 
+		}
 		else alert("not possible");
 	}
-	
 	// function to return list
 	function getAll() {
 		return pokemonList;
@@ -28,6 +29,7 @@ let pokemonRepository = (function () {
 		button.classList.add('button-class');
 		listpokemon.appendChild(button);
 		pokemonList.appendChild(listpokemon);
+		
 		// add event listener to each newly created button for each Pokémon in the list and call function passing pokemon object when button clicked 
 		button.addEventListener('click', function(event) {
 					showDetails(pokemon);
@@ -45,7 +47,6 @@ let pokemonRepository = (function () {
 					detailsUrl: item.url
 				};
 				add(pokemon);
-				console.log(pokemon);
 			});
 		}).catch(function (e) {
 			console.error(e);
@@ -59,12 +60,9 @@ let pokemonRepository = (function () {
 			return response.json();
 		}).then(function (details) {
 			// add details to item pokemon
-			pokemon.imageUrlFront = details.sprites.front_default;
-			pokemon.imageUrlBack = details.sprites.back_default;
+			pokemon.imageUrl = details.sprites.front_default;
 			pokemon.height = details.height;
 			pokemon.types = details.types;
-			pokemon.weight = details.weight;
-			pokemon.abilities = details.abilities;
 		}).catch(function (e) {
 			console.error(e);
 		});
@@ -77,6 +75,21 @@ let pokemonRepository = (function () {
 		});
 	}
 
+	//add event listener to search bar
+	 searchInput.addEventListener('input', function(){
+			let listPokemon = document.querySelectorAll('li');
+			let value = searchInput.value.toUpperCase();
+	
+			listPokemon.forEach(function(pokemon){
+					if(pokemon.innerText.toUpperCase().indexOf(value) > -1){
+							pokemon.style.display = '';
+					}else{
+							pokemon.style.display = 'none';
+					}
+			})
+	});
+
+	// return all functions
 	return {
 		add: add,
 		getAll: getAll,
@@ -93,5 +106,5 @@ pokemonRepository.loadList().then(function() {
 	// forEach loop to iterate over array / repository
 	pokemonRepository.getAll().forEach(function (pokemon) {
 		pokemonRepository.addListItem(pokemon);
-	});
+	})
 });
