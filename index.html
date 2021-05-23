@@ -19,12 +19,22 @@
 			</div>
 			<!-- container main content -->
 			<div class="main">
-				<h2>Table of Pokémons</h2>
+				<h2>Table of Pokemons</h2>
+				<p class="floating"> 
+					<a href="https://pokeapi.co">API source: https://pokeapi.co</a>
+				</p>
 				<!-- Search Bar -->
-				<label for="filter_pokemons" class="hidden">Search Pokemon by name</label>
+				<label for="filter_pokemons" class="hidden">Search Pokémon by name</label>
 					<input type="text" class="form-control" id="filter_pokemons" placeholder="Search Pokemon by name"/>
-				<!-- ul to create pokemon-list (html-content) with JavaScript -->
+				
+				<!-- ul to create pokemon-list with JavaScript -->
 				<ul class="pokemon-list"></ul>
+				
+				<!-- modal container -->
+				<div id='modal-container'>
+					<button id='show-modal'>Show modal</button>
+				</div>
+				
 			</div>
 		</div>
 		<script src="js/promise-polyfill.js"></script>
