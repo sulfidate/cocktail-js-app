@@ -151,7 +151,6 @@ height: 30px;
 
 .modal {
 	margin: auto;
-	display: inline-block;
 	box-sizing: border-box;
 	background: #fff;
 	padding: 0;
@@ -186,4 +185,82 @@ height: 30px;
 
 .modal span {
 	padding-bottom: 20px;
+}
+
+/* Type Background Colors */
+
+.type {
+	padding: 15px 0 15px 0;
+	margin:0 auto;
+	text-align: center;
+	float: left;
+	min-width: 50%;
+}
+
+.fire {
+	background-color:#f19100;
+}
+.water {
+	background-color:#0060f1;
+	color:#fff;
+}
+.grass {
+	background-color:#07861c;
+	color:#fff;
+}
+.bug {
+	background-color:#043f0e;
+	color:#fff;
+}
+.poison {
+	background-color:#7c0a80;
+	color:#fff;
+}
+.ghost {
+	background-color:#3a062d;
+	color:#fff;
+}
+.rock {
+	background-color:#444038;
+	color:#fff;
+}
+.ground {
+	background-color:#633d1e;
+	color:#fff;
+}
+.flying {
+	background-color:#65c5cc;
+}
+.dragon {
+	background-color:#198f6c;
+	color:#fff;
+}
+.electric {
+	background-color:#dbdf21;
+}
+.normal {
+	background-color:#99a18e;
+}
+.fairy {
+	background-color:#dd3b9f;
+	color:#fff;
+}
+.fighting {
+	background-color:#6e3f00;
+	color:#fff;
+}
+.psychic {
+	background-color:#db6db1;
+	color:#fff;
+}
+.ice {
+	background-color:#179edd;
+	color:#fff;
+}
+.steel {
+	background-color:#a7a7a7;
+}
+.dark {
+	background-color:#131313;
+	color:#fff;
 }
