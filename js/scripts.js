@@ -142,7 +142,7 @@ let pokemonRepository = (function () {
 
 	//add event listener to search bar
 	 searchInput.addEventListener('input', function(){
-			let listPokemon = document.querySelectorAll('li');
+			let listPokemon = document.querySelectorAll('button');
 			let value = searchInput.value.toUpperCase();
 	
 			listPokemon.forEach(function(pokemon){
