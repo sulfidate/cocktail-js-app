@@ -10,16 +10,17 @@
 		<title>Pokédex js App</title>
 	</head>
 	<body>
-		<!-- page wrapper -->
-		<div class="page">
 			<!-- container header -->
-			<div class="header">
+			<header>
 				<img src="img/pokemon-logo.png" alt="Pokemon Logo" width="270"/>
 				<h1>Pokédex App</h1>
-				<p class="padding">written in JavaScript </p>
-			</div>
+				<p class="padding">written in JavaScript 
+					<span style="font-size: 9px;">© by sulfidate</span>
+				</p>
+				
+			</header>
 			<!-- container main content -->
-			<div class="main">
+			<main>
 				<h2>Table of Pokemons</h2>
 				<p class="floating"> 
 					<a href="https://pokeapi.co">API source: https://pokeapi.co</a>
@@ -27,10 +28,8 @@
 				<!-- Search Bar -->
 				<label for="filter_pokemons" class="hidden">Search Pokémon by name</label>
 					<input type="text" class="form-control form-inline" id="filter_pokemons" placeholder="Search Pokemon by name"/>
-				
 				<!-- div to create pokemon-list with js-Bootstrap -->
-				<div class="list-group"></div>
-				
+				<ul class="list-group"></ul>
 				<!-- Modal -->
 				<div 
 					class="modal fade"
@@ -59,15 +58,15 @@
 					</div>
 				</div>
 				
-			</div>
-		</div>
+			</main>
+			<footer></footer>
 		<script src="js/promise-polyfill.js"></script>
 		<script src="js/fetch-polyfill.js"></script>
 		<script src="js/tota11y.min.js"></script>
-		<script src="js/scripts.js"></script>
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script src="js/scripts.js"></script>
 	</body>
 </html>
