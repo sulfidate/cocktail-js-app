@@ -24,7 +24,7 @@ let pokemonRepository = (function () {
 	// function to create html-tree of pokemon-List
 	function addListItem(pokemon) {
 		let pokemonList = document.querySelector('.list-group');
-		let listpokemon = document.createElement('button');
+		let listpokemon = document.createElement('li');
 		listpokemon.classList.add('list-group-item', 'list-group-item-action');
 		let button = document.createElement('button');
 		button.innerText = pokemon.name;
@@ -37,8 +37,7 @@ let pokemonRepository = (function () {
 		
 		// add event listener to each newly created button for each Pokémon in the list and call function passing pokemon object when button clicked 
 		button.addEventListener('click', function() {
-					showModal(pokemon);
-					console.log(pokemon);
+					showDetails(pokemon);
 		});
 	}
 	
@@ -62,15 +61,6 @@ let pokemonRepository = (function () {
 			})
 	}
 	
-	// creating a function to loop over object for return value in string essential for display  pokemon types
-	function returnValue(object){
-		 for (let key of Object.keys(object)){
-				 let value = object[key].type.name;
-				 return value
-		}
-}
-
-	
 	// loadDetails function GET pokemon (item) details from object on URL
 	function loadDetails(pokemon) {
 		let url = pokemon.detailsUrl;
@@ -86,63 +76,69 @@ let pokemonRepository = (function () {
 				pokemon.weight = details.weight;
 				pokemon.height = details.height;
 				pokemon.types = details.types;
-				returnValue(details.types);
 			})
 			.catch(function (e) {
 				console.error(e);
 			});
 	}
 	
+	// function showDetails with then to return JSON response
+	function showDetails(pokemon) {
+		loadDetails(pokemon).then(function () {
+			showModal(pokemon);
+		});
+	}
+
 	// function showModal 
-			function showModal(pokemon) {
-				pokemonRepository.loadDetails(pokemon).then(function() {	
-					let modalBody =$(".modal-body");
-					let modalTitle =$(".modal-title");
-					let modalHeader =$(".modal-header");
-					
-					modalTitle.empty();
-					modalBody.empty();
-					
-					//creating element for name in modal content
-					let nameElement = $("<h1>" + pokemon.name + "</h1>");
-					// creating img in modal content
-					let imageElementFront = $('<img class="modal-img" alt="Front of ' + pokemon.name + '" ' + 'style="width:50%">');
-					imageElementFront.attr("src", pokemon.imageUrlFront);
-					let imageElementBack = $('<img class="modal-img" alt="Back of ' + pokemon.name + '" ' + ' style="width:50%">');
-					imageElementBack.attr("src", pokemon.imageUrlBack);
-					// creating element for height in modal content
-					let heightElement = $("<p>" + "Height : " + pokemon.height + "</p>");
-					// creating element for weight in modal content
-					let weightElement = $("<p>" + "Weight : " + pokemon.weight + "</p>");
-					// creating element for type in modal content
-					let typesDiv = document.createElement('div');
-					typesDiv.classList.add('type-wrapper');
-					typesDiv.classList.add('row');
-					pokemon.types.forEach((type) => {
-						let typesElement = document.createElement('span');
-						let typesText = document.createElement('p');
-						typesText.innerText = type.type.name;
-						typesElement.classList.add('type');
-						typesElement.classList.add('col');
-						typesElement.classList.add(type.type.name);
-						typesElement.appendChild(typesText);
-						typesDiv.appendChild(typesElement);
-					});
-					
-					modalTitle.append(nameElement);
-					modalBody.append(imageElementFront);
-					modalBody.append(imageElementBack);
-					modalBody.append(heightElement);
-					modalBody.append(weightElement);
-					modalBody.append(typesDiv);
-				
-					$('#pokemonModal').modal('toggle');
+	function showModal(pokemon) {
+			let modalBody =$(".modal-body");
+			let modalTitle =$(".modal-title");
+			let modalHeader =$(".modal-header");
+			
+			modalTitle.empty();
+			modalBody.empty();
+			
+			//creating element for name in modal content
+			let nameElement = $("<h1>" + pokemon.name + "</h1>");
+			// creating img in modal content
+			let imageElementFront = $('<img class="modal-img" alt="Front of ' + pokemon.name + '" ' + 'style="width:50%">');
+			imageElementFront.attr("src", pokemon.imageUrlFront);
+			let imageElementBack = $('<img class="modal-img" alt="Back of ' + pokemon.name + '" ' + ' style="width:50%">');
+			imageElementBack.attr("src", pokemon.imageUrlBack);
+			// creating element for height in modal content
+			let heightElement = $("<p>" + "Height : " + pokemon.height + "</p>");
+			// creating element for weight in modal content
+			let weightElement = $("<p>" + "Weight : " + pokemon.weight + "</p>");
+			// creating element for type in modal content
+			let typesDiv = document.createElement('div');
+			typesDiv.classList.add('type-wrapper');
+			typesDiv.classList.add('row');
+			
+			pokemon.types.forEach((type) => {
+				let typesElement = document.createElement('span');
+				let typesText = document.createElement('p');
+				typesText.innerText = type.type.name;
+				typesElement.classList.add('type');
+				typesElement.classList.add('col');
+				typesElement.classList.add(type.type.name);
+				typesElement.appendChild(typesText);
+				typesDiv.appendChild(typesElement);
 			});
+			
+			
+			modalTitle.append(nameElement);
+			modalBody.append(imageElementFront);
+			modalBody.append(imageElementBack);
+			modalBody.append(heightElement);
+			modalBody.append(weightElement);
+			modalBody.append(typesDiv);
+		
+			$('#pokemonModal').modal('toggle');
 	}
 
 	//add event listener to search bar
 	 searchInput.addEventListener('input', function(){
-			let listPokemon = document.querySelectorAll('button');
+			let listPokemon = document.querySelectorAll('li');
 			let value = searchInput.value.toUpperCase();
 	
 			listPokemon.forEach(function(pokemon){
@@ -153,7 +149,7 @@ let pokemonRepository = (function () {
 					}
 			})
 	});
-	
+
 	// return all functions
 	return {
 		add: add,
@@ -161,6 +157,7 @@ let pokemonRepository = (function () {
 		addListItem: addListItem,
 		loadList: loadList,
 		loadDetails: loadDetails,
+		showDetails: showDetails,
 		showModal: showModal
 	};
 
