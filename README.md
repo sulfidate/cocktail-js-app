@@ -2,6 +2,18 @@
 
 To build a small web application with __HTML__, __CSS__, and __JavaScript__ that loads data from an _external API_ and _enables the viewing of data points_ in detail.
 
+
+### Description
+* This project was part of the Career Foundry Full Stack Web Development course. It's a small web application with HTML, CSS, and JavaScript that loads data from an external API and enables the viewing of data points in detail.
+
+* The app displays a searchable list of pokemon names. When the user clicks on the name of a pokemon, a modal appears displaying further details on the pokemon (image, height, weight, and types) fetched from an external API.
+
+The app uses the following API to load information on pokemon: https://pokeapi.co/api/v2/pokemon/?limit=150
+
+The app uses Bootstrap for styling purposes.
+
+live demo: https://sulfidate.github.io/cocktail-js-app/
+
 ### Features and Requirements User Goals
 The users should be able to view a list of data and see more details for a given data item on demand. 
 
