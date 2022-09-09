@@ -12,7 +12,6 @@ The app uses the following API to load information on pokemon: https://pokeapi.c
 
 The app uses Bootstrap for styling purposes.
 
-live demo: https://sulfidate.github.io/cocktail-js-app/
 
 
 mobile-view
